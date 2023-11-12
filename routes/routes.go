@@ -3,6 +3,8 @@ package routes
 import (
 	"apiHALL/handlers/DB_Basico/cpfV1"
 	"apiHALL/handlers/DB_Basico/nomeV1"
+	cpfv2 "apiHALL/handlers/DB_Bom/cpfV2"
+	veiculosv1 "apiHALL/handlers/DB_Bom/veiculosV1"
 	"fmt"
 	"log"
 
@@ -22,6 +24,8 @@ func SetupRouter() *gin.Engine {
 	// Adicionar rotas
 	r.GET("/api/cpf", cpfv1.CPF_V1)
 	r.GET("/api/nome", nomev1.NomeV1)
+	r.GET("/api/v2/cpf", cpfv2.CPF_V2)
+	r.GET("/api/placa", veiculosv1.Veiculo)
 
 	return r
 }

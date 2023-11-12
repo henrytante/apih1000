@@ -2,7 +2,7 @@ package cpfv1
 
 import (
 	database "apiHALL/db"
-	dbbasico "apiHALL/handlers/DB_Basico"
+	dbstruct "apiHALL/handlers/DB_Basico"
 	"database/sql"
 
 	"github.com/gin-gonic/gin"
@@ -19,7 +19,7 @@ func CPF_V1(c *gin.Context)  {
 		c.JSON(400, gin.H{"error":"Parametro cpf está vazio"})
 		return
 	}
-	var dados dbbasico.DadosCPF
+	var dados dbstruct.DadosCPF
 	err_Query := db.QueryRow("SELECT cpf,nome,sexo,nascimento FROM pessoas WHERE cpf = ?",cpf).Scan(&dados.CPF,&dados.NOME,&dados.SEXO,&dados.NASCIMENTO)
 	if err_Query != nil{
 		if err_Query == sql.ErrNoRows{
